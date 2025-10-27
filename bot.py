@@ -196,4 +196,21 @@ if __name__ == "__main__":
             except:
                 pass
     bot.polling(none_stop=True)
+    if __name__ == "__main__":
+    # восстановить расписания напоминаний (оставляем как было)
+    for uid, val in reminders_db().items():
+        if val.get("mode") != "off":
+            try:
+                schedule(uid, val["mode"], val["value"])
+            except:
+                pass
+
+    # ВАЖНО: перед запуском опроса — попросить Телеграм "забыть" старые подключения
+    try:
+        bot.delete_webhook(drop_pending_updates=True)
+    except:
+        pass
+
+    bot.polling(none_stop=True)
+    
     
