@@ -285,5 +285,6 @@ if __name__ == "__main__":
                 h, m = map(int, val.split(":"))
                 schedule(uid, h, m)
             except: pass
-    bot.polling(none_stop=True, skip_updates=True)
+    bot.polling(none_stop=True)
+    
     
